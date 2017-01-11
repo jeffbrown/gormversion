@@ -64,3 +64,11 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if(details.requested.group == 'org.grails' && details.requested.name.startsWith('grails-datastore')) {
+            details.useVersion("5.0.12.RELEASE")
+        }
+    }
+}
